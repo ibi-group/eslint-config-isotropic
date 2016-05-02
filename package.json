@@ -6,6 +6,7 @@
         ],
         "sourceMaps": "inline"
     },
+    "bugs": "https://github.com/ibi-group/eslint-config-isotropic/issues",
     "contributors": [
         "Duane Sibilly <duane.sibilly@ibigroup.com>"
     ],
@@ -35,9 +36,11 @@
         },
         "root": true
     },
+    "homepage": "https://github.com/ibi-group/eslint-config-isotropic",
     "license": "BSD-3-Clause",
     "main": "lib/eslint-config-isotropic.js",
     "name": "eslint-config-isotropic",
+    "repository": "ibi-group/eslint-config-isotropic",
     "scripts": {
         "build": "babel js -d lib",
         "lint": "npm run build && eslint js test",
