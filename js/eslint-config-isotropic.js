@@ -7,7 +7,10 @@ const globals = {
         'array-callback-return': 2,
         'arrow-body-style': [
             2,
-            'as-needed'
+            'as-needed',
+            {
+                requireReturnForObjectLiteral: false
+            }
         ],
         'array-bracket-spacing': [
             2,
@@ -75,8 +78,14 @@ const globals = {
         ],
         'dot-notation': 2,
         'eol-last': 2,
-        eqeqeq: 2,
-        'func-names': 0,
+        eqeqeq: [
+            2,
+            'always'
+        ],
+        'func-names': [
+            2,
+            'never'
+        ],
         'func-style': [
             2,
             'expression'
@@ -129,6 +138,7 @@ const globals = {
         'lines-around-comment': 0,
         'max-depth': 0,
         'max-len': 0,
+        'max-lines': 0,
         'max-nested-callbacks': 0,
         'max-params': 0,
         'max-statements': 0,
@@ -214,7 +224,15 @@ const globals = {
         'no-inner-declarations': 2,
         'no-invalid-regexp': 2,
         'no-invalid-this': 0,
-        'no-irregular-whitespace': 2,
+        'no-irregular-whitespace': [
+            2,
+            {
+                skipComments: false,
+                skipRegExps: false,
+                skipStrings: false,
+                skipTemplates: false
+            }
+        ],
         'no-iterator': 2,
         'no-label-var': 1,
         'no-labels': [
@@ -228,6 +246,7 @@ const globals = {
         'no-lonely-if': 1,
         'no-loop-func': 2,
         'no-magic-numbers': 0,
+        'no-mixed-operators': 0,
         'no-mixed-requires': 0,
         'no-mixed-spaces-and-tabs': 2,
         'no-multi-spaces': 2,
@@ -257,6 +276,7 @@ const globals = {
         'no-process-env': 1,
         'no-process-exit': 1,
         'no-proto': 2,
+        'no-prototype-builtins': 0,
         'no-redeclare': 2,
         'no-regex-spaces': 2,
         'no-reserved-keys': 0,
@@ -286,6 +306,7 @@ const globals = {
         'no-unmodified-loop-condition': 2,
         'no-unneeded-ternary': 2,
         'no-unreachable': 1,
+        'no-unsafe-finally': 1,
         'no-unused-expressions': 1,
         'no-unused-labels': 1,
         'no-unused-vars': [
@@ -297,9 +318,18 @@ const globals = {
         ],
         'no-use-before-define': 2,
         'no-useless-call': 2,
+        'no-useless-computed-key': 2,
         'no-useless-concat': 2,
         'no-useless-constructor': 2,
         'no-useless-escape': 2,
+        'no-useless-rename': [
+            2,
+            {
+                ignoreDestructuring: false,
+                ignoreExport: false,
+                ignoreImport: false
+            }
+        ],
         'no-var': 2,
         'no-void': 0,
         'no-warning-comments': [
@@ -313,9 +343,22 @@ const globals = {
         ],
         'no-whitespace-before-property': 2,
         'no-with': 2,
+        'object-curly-newline': [
+            2,
+            {
+                minProperties: 1,
+                multiline: true
+            }
+        ],
         'object-curly-spacing': [
             2,
             'never'
+        ],
+        'object-property-newline': [
+            2,
+            {
+                allowMultiplePropertiesPerLine: false
+            }
         ],
         'object-shorthand': [
             2,
@@ -342,7 +385,13 @@ const globals = {
             'never'
         ],
         'prefer-arrow-callback': 1,
-        'prefer-const': 1,
+        'prefer-const': [
+            1,
+            {
+                destructuring: 'all',
+                ignoreReadBeforeAssign: true
+            }
+        ],
         'prefer-reflect': 2,
         'prefer-rest-params': 1,
         'prefer-spread': 2,
@@ -358,6 +407,10 @@ const globals = {
         radix: 2,
         'require-jsdoc': 2,
         'require-yield': 1,
+        'rest-spread-spacing': [
+            2,
+            'never'
+        ],
         semi: [
             2,
             'always'
@@ -410,6 +463,10 @@ const globals = {
             'global'
         ],
         'template-curly-spacing': [
+            2,
+            'never'
+        ],
+        'unicode-bom': [
             2,
             'never'
         ],
