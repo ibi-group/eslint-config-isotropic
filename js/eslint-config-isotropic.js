@@ -4,6 +4,10 @@ const globals = {
     },
     rules = {
         'accessor-pairs': 0,
+        'array-bracket-spacing': [
+            2,
+            'never'
+        ],
         'array-callback-return': 2,
         'arrow-body-style': [
             2,
@@ -11,10 +15,6 @@ const globals = {
             {
                 requireReturnForObjectLiteral: false
             }
-        ],
-        'array-bracket-spacing': [
-            2,
-            'never'
         ],
         'arrow-parens': [
             2,
@@ -41,6 +41,8 @@ const globals = {
         ],
         'callback-return': 0,
         camelcase: 1,
+        'capitalized-comments': 0,
+        'class-methods-use-this': 1,
         'comma-dangle': [
             2,
             'never'
@@ -77,10 +79,24 @@ const globals = {
             'property'
         ],
         'dot-notation': 2,
-        'eol-last': 2,
+        'eol-last': [
+            2,
+            'always'
+        ],
         eqeqeq: [
             2,
             'always'
+        ],
+        'func-call-spacing': [
+            2,
+            'never'
+        ],
+        'func-name-matching': [
+            1,
+            'always',
+            {
+                includeCommonJSModuleExports: false
+            }
         ],
         'func-names': [
             2,
@@ -107,6 +123,19 @@ const globals = {
             2,
             4,
             {
+                CallExpression: {
+                    arguments: 1
+                },
+                FunctionDeclaration: {
+                    body: 1,
+                    parameters: 1
+                },
+                FunctionExpression: {
+                    body: 1,
+                    parameters: 1
+                },
+                MemberExpression: 1,
+                outerIIFEBody: 1,
                 SwitchCase: 1,
                 VariableDeclarator: 1
             }
@@ -120,7 +149,8 @@ const globals = {
             2,
             {
                 afterColon: true,
-                beforeColon: false
+                beforeColon: false,
+                mode: 'strict'
             }
         ],
         'keyword-spacing': [
@@ -131,11 +161,19 @@ const globals = {
                 overrides: {}
             }
         ],
+        'line-comment-position': 0,
         'linebreak-style': [
             2,
             'unix'
         ],
         'lines-around-comment': 0,
+        'lines-around-directive': [
+            2,
+            {
+                after: 'always',
+                before: 'never'
+            }
+        ],
         'max-depth': 0,
         'max-len': 0,
         'max-lines': 0,
@@ -147,6 +185,10 @@ const globals = {
             {
                 max: 1
             }
+        ],
+        'multiline-ternary': [
+            2,
+            'always'
         ],
         'new-cap': 1,
         'new-parens': 2,
@@ -210,6 +252,7 @@ const globals = {
         'no-fallthrough': 2,
         'no-floating-decimal': 0,
         'no-func-assign': 2,
+        'no-global-assign': 2,
         'no-implicit-coercion': [
             2,
             {
@@ -257,9 +300,7 @@ const globals = {
                 max: 1
             }
         ],
-        'no-native-reassign': 2,
         'no-negated-condition': 2,
-        'no-negated-in-lhs': 2,
         'no-nested-ternary': 0,
         'no-new': 1,
         'no-new-func': 2,
@@ -283,17 +324,25 @@ const globals = {
         'no-restricted-globals': 0,
         'no-restricted-imports': 0,
         'no-restricted-modules': 0,
+        'no-restricted-properties': 0,
         'no-restricted-syntax': 0,
         'no-return-assign': 2,
+        'no-return-await': 2,
         'no-script-url': 1,
-        'no-self-assign': 2,
+        'no-self-assign': [
+            2,
+            {
+                props: true
+            }
+        ],
         'no-self-compare': 2,
         'no-sequences': 2,
         'no-shadow': 0,
         'no-shadow-restricted-names': 2,
-        'no-spaced-func': 2,
         'no-sparse-arrays': 1,
         'no-sync': 1,
+        'no-tabs': 2,
+        'no-template-curly-in-string': 1,
         'no-ternary': 0,
         'no-this-before-super': 2,
         'no-throw-literal': 2,
@@ -307,6 +356,7 @@ const globals = {
         'no-unneeded-ternary': 2,
         'no-unreachable': 1,
         'no-unsafe-finally': 1,
+        'no-unsafe-negation': 2,
         'no-unused-expressions': 1,
         'no-unused-labels': 1,
         'no-unused-vars': [
@@ -330,6 +380,7 @@ const globals = {
                 ignoreImport: false
             }
         ],
+        'no-useless-return': 2,
         'no-var': 2,
         'no-void': 0,
         'no-warning-comments': [
@@ -392,7 +443,7 @@ const globals = {
                 ignoreReadBeforeAssign: true
             }
         ],
-        'prefer-reflect': 2,
+        'prefer-numeric-literals': 2,
         'prefer-rest-params': 1,
         'prefer-spread': 2,
         'prefer-template': 1,
@@ -405,6 +456,7 @@ const globals = {
             'single'
         ],
         radix: 2,
+        'require-await': 1,
         'require-jsdoc': 2,
         'require-yield': 1,
         'rest-spread-spacing': [
@@ -435,6 +487,7 @@ const globals = {
                 ]
             }
         ],
+        'sort-keys': 0,
         'sort-vars': 0,
         'space-before-blocks': [
             2,
@@ -462,6 +515,7 @@ const globals = {
             2,
             'global'
         ],
+        'symbol-description': 2,
         'template-curly-spacing': [
             2,
             'never'
@@ -498,11 +552,19 @@ const globals = {
                 requireReturnDescription: false
             }
         ],
-        'valid-typeof': 2,
+        'valid-typeof': [
+            2,
+            {
+                requireStringLiterals: false
+            }
+        ],
         'vars-on-top': 0,
         'wrap-iife': [
             2,
-            'outside'
+            'outside',
+            {
+                functionPrototypeMethods: true
+            }
         ],
         'wrap-regex': 0,
         'yield-star-spacing': [
