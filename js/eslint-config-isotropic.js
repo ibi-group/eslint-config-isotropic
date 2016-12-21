@@ -123,6 +123,7 @@ const globals = {
             2,
             4,
             {
+                ArrayExpression: 1,
                 CallExpression: {
                     arguments: 1
                 },
@@ -135,6 +136,7 @@ const globals = {
                     parameters: 1
                 },
                 MemberExpression: 1,
+                ObjectExpression: 1,
                 outerIIFEBody: 1,
                 SwitchCase: 1,
                 VariableDeclarator: 1
@@ -200,6 +202,7 @@ const globals = {
         'newline-per-chained-call': 0,
         'no-alert': 1,
         'no-array-constructor': 2,
+        'no-await-in-loop': 0,
         'no-bitwise': 1,
         'no-caller': 2,
         'no-case-declarations': 2,
