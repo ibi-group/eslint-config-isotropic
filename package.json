@@ -18,7 +18,7 @@
         "babel-preset-babili": "~0.0.9",
         "babel-preset-latest": "~6.16.0",
         "chai": "~3.5.0",
-        "eslint": "~3.12.2",
+        "eslint": "~3.13.0",
         "mocha": "~3.2.0",
         "nsp": "~2.6.2"
     },
