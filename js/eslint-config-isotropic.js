@@ -416,7 +416,12 @@ const globals = {
         ],
         'object-shorthand': [
             2,
-            'always'
+            'always',
+            {
+                avoidExplicitReturnArrows: false,
+                avoidQuotes: false,
+                ignoreConstructors: false
+            }
         ],
         'one-var': [
             2,
@@ -446,6 +451,7 @@ const globals = {
                 ignoreReadBeforeAssign: true
             }
         ],
+        'prefer-destructuring': 0,
         'prefer-numeric-literals': 2,
         'prefer-rest-params': 1,
         'prefer-spread': 2,
