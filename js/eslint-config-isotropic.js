@@ -250,7 +250,10 @@ const globals = {
         'no-extra-bind': 1,
         'no-extra-boolean-cast': 2,
         'no-extra-label': 2,
-        'no-extra-parens': 1,
+        'no-extra-parens': [
+            1,
+            'all'
+        ],
         'no-extra-semi': 2,
         'no-fallthrough': 2,
         'no-floating-decimal': 0,
@@ -295,6 +298,7 @@ const globals = {
         'no-mixed-operators': 0,
         'no-mixed-requires': 0,
         'no-mixed-spaces-and-tabs': 2,
+        'no-multi-assign': 2,
         'no-multi-spaces': 2,
         'no-multi-str': 2,
         'no-multiple-empty-lines': [
@@ -366,10 +370,19 @@ const globals = {
             1,
             {
                 args: 'after-used',
+                caughtErrors: 'none',
+                ignoreRestSiblings: true,
                 vars: 'all'
             }
         ],
-        'no-use-before-define': 2,
+        'no-use-before-define': [
+            2,
+            {
+                classes: true,
+                functions: true,
+                variables: true
+            }
+        ],
         'no-useless-call': 2,
         'no-useless-computed-key': 2,
         'no-useless-concat': 2,
@@ -453,6 +466,7 @@ const globals = {
         ],
         'prefer-destructuring': 0,
         'prefer-numeric-literals': 2,
+        'prefer-promise-reject-errors': 2,
         'prefer-rest-params': 1,
         'prefer-spread': 2,
         'prefer-template': 1,
@@ -526,6 +540,10 @@ const globals = {
         ],
         'symbol-description': 2,
         'template-curly-spacing': [
+            2,
+            'never'
+        ],
+        'template-tag-spacing': [
             2,
             'never'
         ],
