@@ -4,11 +4,13 @@ const globals = {
     },
     rules = {
         'accessor-pairs': 0,
+        'array-bracket-newline': 0,
         'array-bracket-spacing': [
             2,
             'never'
         ],
         'array-callback-return': 2,
+        'array-element-newline': 0,
         'arrow-body-style': [
             2,
             'as-needed',
@@ -87,6 +89,7 @@ const globals = {
             2,
             'always'
         ],
+        'for-direction': 2,
         'func-call-spacing': [
             2,
             'never'
@@ -106,9 +109,19 @@ const globals = {
             2,
             'expression'
         ],
+        'function-paren-newline': [
+            2,
+            'consistent'
+        ],
         'generator-star-spacing': [
             2,
             'after'
+        ],
+        'getter-return': [
+            2,
+            {
+                allowImplicit: false
+            }
         ],
         'global-require': 1,
         'guard-for-in': 1,
@@ -135,6 +148,7 @@ const globals = {
                     body: 1,
                     parameters: 1
                 },
+                ImportDeclaration: 1,
                 MemberExpression: 1,
                 ObjectExpression: 1,
                 outerIIFEBody: 1,
@@ -169,13 +183,6 @@ const globals = {
             'unix'
         ],
         'lines-around-comment': 0,
-        'lines-around-directive': [
-            2,
-            {
-                after: 'always',
-                before: 'never'
-            }
-        ],
         'max-depth': 0,
         'max-len': 0,
         'max-lines': 0,
@@ -194,20 +201,17 @@ const globals = {
         ],
         'new-cap': 1,
         'new-parens': 2,
-        'newline-after-var': [
-            2,
-            'always'
-        ],
-        'newline-before-return': 0,
         'newline-per-chained-call': 0,
         'no-alert': 1,
         'no-array-constructor': 2,
         'no-await-in-loop': 0,
         'no-bitwise': 1,
+        'no-buffer-constructor': 2,
         'no-caller': 2,
         'no-case-declarations': 2,
         'no-catch-shadow': 0,
         'no-class-assign': 2,
+        'no-compare-neg-zero': 2,
         'no-cond-assign': 2,
         'no-confusing-arrow': [
             2,
@@ -251,8 +255,15 @@ const globals = {
         'no-extra-boolean-cast': 2,
         'no-extra-label': 2,
         'no-extra-parens': [
-            1,
-            'all'
+            2,
+            'all',
+            {
+                conditionalAssign: false,
+                enforceForArrowConditionals: false,
+                ignoreJSX: 'none',
+                nestedBinaryExpressions: false,
+                returnAssign: false
+            }
         ],
         'no-extra-semi': 2,
         'no-fallthrough': 2,
@@ -347,13 +358,24 @@ const globals = {
         'no-shadow': 0,
         'no-shadow-restricted-names': 2,
         'no-sparse-arrays': 1,
-        'no-sync': 1,
+        'no-sync': [
+            1,
+            {
+                allowAtRootLevel: false
+            }
+        ],
         'no-tabs': 2,
         'no-template-curly-in-string': 1,
         'no-ternary': 0,
         'no-this-before-super': 2,
         'no-throw-literal': 2,
-        'no-trailing-spaces': 2,
+        'no-trailing-spaces': [
+            2,
+            {
+                ignoreComments: false,
+                skipBlankLines: false
+            }
+        ],
         'no-undef': 2,
         'no-undef-init': 2,
         'no-undefined': 2,
@@ -410,9 +432,14 @@ const globals = {
         ],
         'no-whitespace-before-property': 2,
         'no-with': 2,
+        'nonblock-statement-body-position': [
+            2,
+            'beside'
+        ],
         'object-curly-newline': [
             2,
             {
+                consistent: true,
                 minProperties: 1,
                 multiline: true
             }
@@ -456,6 +483,28 @@ const globals = {
             2,
             'never'
         ],
+        'padding-line-between-statements': [
+            2,
+            {
+                blankLine: 'always',
+                next: '*',
+                prev: [
+                    'const',
+                    'let',
+                    'var'
+                ]
+            },
+            {
+                blankLine: 'always',
+                next: '*',
+                prev: 'directive'
+            },
+            {
+                blankLine: 'any',
+                next: 'directive',
+                prev: 'directive'
+            }
+        ],
         'prefer-arrow-callback': 1,
         'prefer-const': [
             1,
@@ -497,6 +546,10 @@ const globals = {
                 before: false
             }
         ],
+        'semi-style': [
+            2,
+            'last'
+        ],
         'sort-imports': [
             2,
             {
@@ -537,6 +590,13 @@ const globals = {
         strict: [
             2,
             'global'
+        ],
+        'switch-colon-spacing': [
+            2,
+            {
+                after: true,
+                before: false
+            }
         ],
         'symbol-description': 2,
         'template-curly-spacing': [
