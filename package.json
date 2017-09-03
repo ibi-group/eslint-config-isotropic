@@ -1,9 +1,22 @@
 {
     "author": "Steven Olmsted <steven.olmsted@ibigroup.com>",
     "babel": {
+        "env": {
+            "build": {
+                "presets": [
+                    "minify"
+                ]
+            }
+        },
         "presets": [
-            "babili",
-            "latest"
+            [
+                "env",
+                {
+                    "targets": {
+                        "node": "current"
+                    }
+                }
+            ]
         ],
         "sourceMaps": "inline"
     },
@@ -13,18 +26,18 @@
     ],
     "description": "Shareable eslint configuration.",
     "devDependencies": {
-        "babel-cli": "~6.22.2",
-        "babel-istanbul": "~0.12.1",
-        "babel-preset-babili": "~0.0.10",
-        "babel-preset-latest": "~6.22.0",
-        "chai": "~3.5.0",
-        "eslint": "~3.15.0",
-        "mocha": "~3.2.0",
-        "nsp": "~2.6.2"
+        "babel-cli": "~6.26.0",
+        "babel-istanbul": "~0.12.2",
+        "babel-preset-env": "~1.6.0",
+        "babel-preset-minify": "~0.2.0",
+        "chai": "~4.1.2",
+        "eslint": "~4.6.0",
+        "mocha": "~3.5.0",
+        "nsp": "~2.7.0"
     },
     "engines": {
-        "node": "^6.9.5",
-        "npm": "^4.1.2"
+        "node": "^8.4.0",
+        "npm": "^5.4.0"
     },
     "eslintConfig": {
         "env": {
@@ -49,7 +62,7 @@
     "name": "eslint-config-isotropic",
     "repository": "ibi-group/eslint-config-isotropic",
     "scripts": {
-        "build": "babel js -d lib",
+        "build": "BABEL_ENV=build babel js -d lib",
         "lint": "npm run build && eslint js test",
         "posttest": "[ -z \"$npm_config_coverage\" ] || babel-istanbul check-coverage --branches 100 --functions 100 --lines 100 --statements 100",
         "prepare": "npm run build",
