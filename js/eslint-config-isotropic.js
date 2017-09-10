@@ -1,8 +1,8 @@
-const globals = {
+const _globals = {
         __line: true,
         __logger: true
     },
-    rules = {
+    _rules = {
         'accessor-pairs': 'off',
         'array-bracket-newline': 'off',
         'array-bracket-spacing': [
@@ -669,6 +669,6 @@ const globals = {
     };
 
 export {
-    globals,
-    rules
+    _globals as globals,
+    _rules as rules
 };

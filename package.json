@@ -32,18 +32,20 @@
         "babel-preset-minify": "~0.2.0",
         "chai": "~4.1.2",
         "eslint": "~4.6.0",
-        "mocha": "~3.5.0",
-        "nsp": "~2.7.0"
+        "eslint-find-rules": "~3.1.1",
+        "eslint-plugin-isotropic": "~0.0.0",
+        "mocha": "~3.5.1",
+        "nsp": "~2.8.0"
     },
     "engines": {
         "node": "^8.4.0",
-        "npm": "^5.4.0"
+        "npm": "^5.4.1"
     },
     "eslintConfig": {
         "env": {
             "es6": true
         },
-        "extends": "./lib/eslint-config-isotropic.js",
+        "extends": "plugin:isotropic/isotropic",
         "parserOptions": {
             "ecmaFeatures": {
                 "experimentalObjectRestSpread": true,
@@ -54,6 +56,9 @@
             "ecmaVersion": 2017,
             "sourceType": "module"
         },
+        "plugins": [
+            "isotropic"
+        ],
         "root": true
     },
     "homepage": "https://github.com/ibi-group/eslint-config-isotropic",
@@ -63,7 +68,7 @@
     "repository": "ibi-group/eslint-config-isotropic",
     "scripts": {
         "build": "BABEL_ENV=build babel js -d lib",
-        "lint": "npm run build && eslint js test",
+        "lint": "npm run build && eslint-find-rules -u && eslint js test",
         "posttest": "[ -z \"$npm_config_coverage\" ] || babel-istanbul check-coverage --branches 100 --functions 100 --lines 100 --statements 100",
         "prepare": "npm run build",
         "prepublishOnly": "npm run securityCheck && npm test --coverage",
