@@ -4,13 +4,24 @@ const _globals = {
     },
     _rules = {
         'accessor-pairs': 'off',
-        'array-bracket-newline': 'off',
+        'array-bracket-newline': [
+            'error',
+            'consistent'
+        ],
         'array-bracket-spacing': [
             'error',
             'never'
         ],
-        'array-callback-return': 'error',
-        'array-element-newline': 'off',
+        'array-callback-return': [
+            'error',
+            {
+                allowImplicit: true
+            }
+        ],
+        'array-element-newline': [
+            'error',
+            'consistent'
+        ],
         'arrow-body-style': [
             'error',
             'as-needed',
@@ -42,7 +53,14 @@ const _globals = {
             }
         ],
         'callback-return': 'off',
-        camelcase: 'warn',
+        camelcase: [
+            'warn',
+            {
+                allow: [],
+                ignoreDestructuring: false,
+                properties: 'always'
+            }
+        ],
         'capitalized-comments': 'off',
         'class-methods-use-this': 'warn',
         'comma-dangle': [
@@ -98,12 +116,16 @@ const _globals = {
             'warn',
             'always',
             {
+                considerPropertyDescriptor: true,
                 includeCommonJSModuleExports: false
             }
         ],
         'func-names': [
             'error',
-            'never'
+            'never',
+            {
+                generators: 'never'
+            }
         ],
         'func-style': [
             'error',
@@ -132,6 +154,10 @@ const _globals = {
         'id-blacklist': 'off',
         'id-length': 'off',
         'id-match': 'off',
+        'implicit-arrow-linebreak': [
+            'error',
+            'beside'
+        ],
         indent: [
             'error',
             4,
@@ -140,6 +166,7 @@ const _globals = {
                 CallExpression: {
                     arguments: 1
                 },
+                flatTernaryExpressions: false,
                 FunctionDeclaration: {
                     body: 1,
                     parameters: 1
@@ -148,6 +175,7 @@ const _globals = {
                     body: 1,
                     parameters: 1
                 },
+                ignoreComments: false,
                 ImportDeclaration: 1,
                 MemberExpression: 1,
                 ObjectExpression: 1,
@@ -183,9 +211,21 @@ const _globals = {
             'unix'
         ],
         'lines-around-comment': 'off',
+        'lines-between-class-members': [
+            'error',
+            'never',
+            {
+                exceptAfterSingleLine: false
+            }
+        ],
+        'max-classes-per-file': [
+            'error',
+            1
+        ],
         'max-depth': 'off',
         'max-len': 'off',
         'max-lines': 'off',
+        'max-lines-per-function': 'off',
         'max-nested-callbacks': 'off',
         'max-params': 'off',
         'max-statements': 'off',
@@ -194,6 +234,10 @@ const _globals = {
             {
                 max: 1
             }
+        ],
+        'multiline-comment-style': [
+            'warn',
+            'bare-block'
         ],
         'multiline-ternary': [
             'error',
@@ -204,12 +248,12 @@ const _globals = {
         'newline-per-chained-call': 'off',
         'no-alert': 'warn',
         'no-array-constructor': 'error',
+        'no-async-promise-executor': 'error',
         'no-await-in-loop': 'off',
         'no-bitwise': 'warn',
         'no-buffer-constructor': 'error',
         'no-caller': 'error',
         'no-case-declarations': 'error',
-        'no-catch-shadow': 'off',
         'no-class-assign': 'error',
         'no-compare-neg-zero': 'error',
         'no-cond-assign': 'error',
@@ -237,7 +281,12 @@ const _globals = {
                 includeExports: true
             }
         ],
-        'no-else-return': 'warn',
+        'no-else-return': [
+            'error',
+            {
+                allowElseIf: true
+            }
+        ],
         'no-empty': 'warn',
         'no-empty-character-class': 'error',
         'no-empty-function': [
@@ -306,6 +355,7 @@ const _globals = {
         'no-lonely-if': 'warn',
         'no-loop-func': 'error',
         'no-magic-numbers': 'off',
+        'no-misleading-character-class': 'error',
         'no-mixed-operators': 'off',
         'no-mixed-requires': 'off',
         'no-mixed-spaces-and-tabs': 'error',
@@ -364,7 +414,12 @@ const _globals = {
                 allowAtRootLevel: false
             }
         ],
-        'no-tabs': 'error',
+        'no-tabs': [
+            'error',
+            {
+                allowIndentationTabs: false
+            }
+        ],
         'no-template-curly-in-string': 'warn',
         'no-ternary': 'off',
         'no-this-before-super': 'error',
@@ -451,7 +506,7 @@ const _globals = {
         'object-property-newline': [
             'error',
             {
-                allowMultiplePropertiesPerLine: false
+                allowAllPropertiesOnSameLine: false
             }
         ],
         'object-shorthand': [
@@ -489,6 +544,14 @@ const _globals = {
                 blankLine: 'always',
                 next: '*',
                 prev: [
+                    'block',
+                    'block-like'
+                ]
+            },
+            {
+                blankLine: 'always',
+                next: '*',
+                prev: [
                     'const',
                     'let',
                     'var'
@@ -515,6 +578,7 @@ const _globals = {
         ],
         'prefer-destructuring': 'off',
         'prefer-numeric-literals': 'error',
+        'prefer-object-spread': 'error',
         'prefer-promise-reject-errors': 'error',
         'prefer-rest-params': 'warn',
         'prefer-spread': 'error',
@@ -528,8 +592,10 @@ const _globals = {
             'single'
         ],
         radix: 'error',
+        'require-atomic-updates': 'error',
         'require-await': 'warn',
-        'require-jsdoc': 'error',
+        'require-jsdoc': 'off',
+        'require-unicode-regexp': 'error',
         'require-yield': 'warn',
         'rest-spread-spacing': [
             'error',
@@ -537,7 +603,10 @@ const _globals = {
         ],
         semi: [
             'error',
-            'always'
+            'always',
+            {
+                omitLastInOneLineBlock: false
+            }
         ],
         'semi-spacing': [
             'error',
@@ -635,6 +704,7 @@ const _globals = {
                     var: 'member'
                 },
                 requireParamDescription: false,
+                requireParamType: false,
                 requireReturn: false,
                 requireReturnDescription: false
             }
