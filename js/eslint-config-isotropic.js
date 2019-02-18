@@ -1,6 +1,6 @@
 const _globals = {
-        __line: true,
-        __logger: true
+        __line: 'readonly',
+        __logger: 'readonly'
     },
     _rules = {
         'accessor-pairs': 'off',
@@ -461,6 +461,7 @@ const _globals = {
             }
         ],
         'no-useless-call': 'error',
+        'no-useless-catch': 'error',
         'no-useless-computed-key': 'error',
         'no-useless-concat': 'error',
         'no-useless-constructor': 'error',
@@ -536,7 +537,10 @@ const _globals = {
         ],
         'padded-blocks': [
             'error',
-            'never'
+            'never',
+            {
+                allowSingleLineBlocks: false
+            }
         ],
         'padding-line-between-statements': [
             'error',
@@ -566,6 +570,11 @@ const _globals = {
                 blankLine: 'any',
                 next: 'directive',
                 prev: 'directive'
+            },
+            {
+                blankLine: 'never',
+                next: 'case',
+                prev: '*'
             }
         ],
         'prefer-arrow-callback': 'warn',
@@ -594,7 +603,6 @@ const _globals = {
         radix: 'error',
         'require-atomic-updates': 'error',
         'require-await': 'warn',
-        'require-jsdoc': 'off',
         'require-unicode-regexp': 'error',
         'require-yield': 'warn',
         'rest-spread-spacing': [
@@ -623,6 +631,7 @@ const _globals = {
             'error',
             {
                 ignoreCase: true,
+                ignoreDeclarationSort: false,
                 ignoreMemberSort: false,
                 memberSyntaxSortOrder: [
                     'none',
@@ -681,34 +690,6 @@ const _globals = {
             'never'
         ],
         'use-isnan': 'error',
-        'valid-jsdoc': [
-            'warn',
-            {
-                prefer: {
-                    argument: 'arg',
-                    augments: 'extends',
-                    constructor: 'class',
-                    defaultvalue: 'default',
-                    desc: 'description',
-                    exception: 'throws',
-                    fileoverview: 'file',
-                    fires: 'emits',
-                    func: 'function',
-                    host: 'external',
-                    linkcode: 'link',
-                    linkplain: 'link',
-                    overview: 'file',
-                    param: 'arg',
-                    prop: 'property',
-                    return: 'returns',
-                    var: 'member'
-                },
-                requireParamDescription: false,
-                requireParamType: false,
-                requireReturn: false,
-                requireReturnDescription: false
-            }
-        ],
         'valid-typeof': [
             'error',
             {
