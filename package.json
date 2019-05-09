@@ -41,7 +41,7 @@
         "cross-env": "~5.2.0",
         "eslint": "~5.16.0",
         "eslint-find-rules": "~3.3.1",
-        "eslint-plugin-isotropic": "~0.2.0",
+        "eslint-plugin-isotropic": "~0.4.1",
         "mocha": "~6.1.4",
         "nyc": "~14.1.0"
     },
@@ -99,5 +99,5 @@
         "pretest": "npm run lint",
         "test": "cross-env BABEL_ENV=test nyc mocha"
     },
-    "version": "0.9.0"
+    "version": "0.9.1"
 }
