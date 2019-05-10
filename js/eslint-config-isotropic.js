@@ -389,7 +389,13 @@ const _globals = {
         'no-redeclare': 'error',
         'no-regex-spaces': 'error',
         'no-reserved-keys': 'off',
-        'no-restricted-globals': 'off',
+        'no-restricted-globals': [
+            'error',
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'Error'
+            }
+        ],
         'no-restricted-imports': 'off',
         'no-restricted-modules': 'off',
         'no-restricted-properties': 'off',

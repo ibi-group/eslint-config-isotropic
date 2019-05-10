@@ -41,9 +41,9 @@
         "cross-env": "~5.2.0",
         "eslint": "~5.16.0",
         "eslint-find-rules": "~3.3.1",
-        "eslint-plugin-isotropic": "~0.4.2",
+        "eslint-plugin-isotropic": "~0.5.0",
         "mocha": "~6.1.4",
-        "nyc": "~14.1.0"
+        "nyc": "~14.1.1"
     },
     "engines": {
         "node": "^10.15.3",
@@ -69,6 +69,14 @@
         "root": true
     },
     "homepage": "https://github.com/ibi-group/eslint-config-isotropic",
+    "keywords": [
+        "config",
+        "eslint",
+        "eslint config",
+        "eslint-config",
+        "eslintconfig",
+        "isotropic"
+    ],
     "license": "BSD-3-Clause",
     "main": "lib/eslint-config-isotropic.js",
     "name": "eslint-config-isotropic",
@@ -99,5 +107,5 @@
         "pretest": "npm run lint",
         "test": "cross-env BABEL_ENV=test nyc mocha"
     },
-    "version": "0.9.2"
+    "version": "0.10.0"
 }
