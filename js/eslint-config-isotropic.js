@@ -1,9 +1,17 @@
 const _globals = {
-        __line: 'readonly',
-        __logger: 'readonly'
+        __line: 'readonly'
     },
+    _noInlineConfig = false,
+    _reportUnusedDisableDirectives = true,
     _rules = {
-        'accessor-pairs': 'off',
+        'accessor-pairs': [
+            'warn',
+            {
+                enforceForClassMembers: true,
+                getWithoutSet: false,
+                setWithoutGet: true
+            }
+        ],
         'array-bracket-newline': [
             'error',
             'consistent'
@@ -52,12 +60,13 @@ const _globals = {
                 allowSingleLine: false
             }
         ],
-        'callback-return': 'off',
         camelcase: [
             'warn',
             {
                 allow: [],
                 ignoreDestructuring: false,
+                ignoreGlobals: false,
+                ignoreImports: false,
                 properties: 'always'
             }
         ],
@@ -81,7 +90,10 @@ const _globals = {
         complexity: 'off',
         'computed-property-spacing': [
             'error',
-            'never'
+            'never',
+            {
+                enforceForClassMembers: true
+            }
         ],
         'consistent-return': 'off',
         'consistent-this': [
@@ -94,6 +106,8 @@ const _globals = {
             'all'
         ],
         'default-case': 'off',
+        'default-case-last': 'error',
+        'default-param-last': 'warn',
         'dot-location': [
             'error',
             'property'
@@ -131,6 +145,10 @@ const _globals = {
             'error',
             'expression'
         ],
+        'function-call-argument-newline': [
+            'error',
+            'consistent'
+        ],
         'function-paren-newline': [
             'error',
             'consistent'
@@ -145,13 +163,12 @@ const _globals = {
                 allowImplicit: false
             }
         ],
-        'global-require': 'warn',
-        'guard-for-in': 'warn',
-        'handle-callback-err': [
+        'grouped-accessor-pairs': [
             'error',
-            'error'
+            'getBeforeSet'
         ],
-        'id-blacklist': 'off',
+        'guard-for-in': 'warn',
+        'id-denylist': 'off',
         'id-length': 'off',
         'id-match': 'off',
         'implicit-arrow-linebreak': [
@@ -176,9 +193,14 @@ const _globals = {
                     parameters: 1
                 },
                 ignoreComments: false,
+                ignoredNodes: [
+                    'CallExpression[callee.object.type=\'TemplateLiteral\'] *',
+                    'TemplateLiteral *'
+                ],
                 ImportDeclaration: 1,
                 MemberExpression: 1,
                 ObjectExpression: 1,
+                offsetTernaryExpressions: false,
                 outerIIFEBody: 1,
                 SwitchCase: 1,
                 VariableDeclarator: 1
@@ -251,7 +273,6 @@ const _globals = {
         'no-async-promise-executor': 'error',
         'no-await-in-loop': 'off',
         'no-bitwise': 'warn',
-        'no-buffer-constructor': 'error',
         'no-caller': 'error',
         'no-case-declarations': 'error',
         'no-class-assign': 'error',
@@ -266,6 +287,7 @@ const _globals = {
         'no-console': 'warn',
         'no-const-assign': 'error',
         'no-constant-condition': 'warn',
+        'no-constructor-return': 'error',
         'no-continue': 'off',
         'no-control-regex': 'off',
         'no-debugger': 'error',
@@ -273,6 +295,7 @@ const _globals = {
         'no-div-regex': 'off',
         'no-dupe-args': 'error',
         'no-dupe-class-members': 'error',
+        'no-dupe-else-if': 'error',
         'no-dupe-keys': 'error',
         'no-duplicate-case': 'error',
         'no-duplicate-imports': [
@@ -307,11 +330,14 @@ const _globals = {
             'error',
             'all',
             {
-                conditionalAssign: false,
+                conditionalAssign: true,
                 enforceForArrowConditionals: false,
+                enforceForFunctionPrototypeMethods: true,
+                enforceForNewInMemberExpressions: true,
+                enforceForSequenceExpressions: true,
                 ignoreJSX: 'none',
-                nestedBinaryExpressions: false,
-                returnAssign: false
+                nestedBinaryExpressions: true,
+                returnAssign: true
             }
         ],
         'no-extra-semi': 'error',
@@ -329,10 +355,16 @@ const _globals = {
         ],
         'no-implicit-globals': 'off',
         'no-implied-eval': 'error',
+        'no-import-assign': 'error',
         'no-inline-comments': 'off',
         'no-inner-declarations': 'error',
         'no-invalid-regexp': 'error',
-        'no-invalid-this': 'off',
+        'no-invalid-this': [
+            'warn',
+            {
+                capIsConstructor: false
+            }
+        ],
         'no-irregular-whitespace': [
             'error',
             {
@@ -354,10 +386,10 @@ const _globals = {
         'no-lone-blocks': 'warn',
         'no-lonely-if': 'warn',
         'no-loop-func': 'error',
+        'no-loss-of-precision': 'error',
         'no-magic-numbers': 'off',
         'no-misleading-character-class': 'error',
         'no-mixed-operators': 'off',
-        'no-mixed-requires': 'off',
         'no-mixed-spaces-and-tabs': 'error',
         'no-multi-assign': 'error',
         'no-multi-spaces': 'error',
@@ -373,31 +405,76 @@ const _globals = {
         'no-new': 'warn',
         'no-new-func': 'error',
         'no-new-object': 'error',
-        'no-new-require': 'error',
         'no-new-symbol': 'error',
         'no-new-wrappers': 'error',
         'no-obj-calls': 'error',
         'no-octal': 'error',
         'no-octal-escape': 'error',
         'no-param-reassign': 'off',
-        'no-path-concat': 'warn',
         'no-plusplus': 'error',
-        'no-process-env': 'warn',
-        'no-process-exit': 'warn',
+        'no-promise-executor-return': 'error',
         'no-proto': 'error',
         'no-prototype-builtins': 'off',
         'no-redeclare': 'error',
         'no-regex-spaces': 'error',
         'no-reserved-keys': 'off',
+        'no-restricted-exports': 'off',
         'no-restricted-globals': [
             'error',
             {
                 message: 'Use isotropic-error instead.',
+                name: 'AggregateError'
+            },
+            {
+                message: 'Use isotropic-error instead.',
                 name: 'Error'
+            },
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'EvalError'
+            },
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'InternalError'
+            },
+            {
+                message: 'Use Number.isNaN instead.',
+                name: 'isNaN'
+            },
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'RangeError'
+            },
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'ReferenceError'
+            },
+            {
+                message: 'Use isotropic-later instead.',
+                name: 'setImmediate'
+            },
+            {
+                message: 'Use isotropic-later instead.',
+                name: 'setInterval'
+            },
+            {
+                message: 'Use isotropic-later instead.',
+                name: 'setTimeout'
+            },
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'SyntaxError'
+            },
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'TypeError'
+            },
+            {
+                message: 'Use isotropic-error instead.',
+                name: 'URIError'
             }
         ],
         'no-restricted-imports': 'off',
-        'no-restricted-modules': 'off',
         'no-restricted-properties': 'off',
         'no-restricted-syntax': 'off',
         'no-return-assign': 'error',
@@ -411,15 +488,10 @@ const _globals = {
         ],
         'no-self-compare': 'error',
         'no-sequences': 'error',
+        'no-setter-return': 'error',
         'no-shadow': 'off',
         'no-shadow-restricted-names': 'error',
         'no-sparse-arrays': 'warn',
-        'no-sync': [
-            'warn',
-            {
-                allowAtRootLevel: false
-            }
-        ],
         'no-tabs': [
             'error',
             {
@@ -445,8 +517,14 @@ const _globals = {
         'no-unmodified-loop-condition': 'error',
         'no-unneeded-ternary': 'error',
         'no-unreachable': 'warn',
+        'no-unreachable-loop': 'error',
         'no-unsafe-finally': 'warn',
-        'no-unsafe-negation': 'error',
+        'no-unsafe-negation': [
+            'error',
+            {
+                enforceForOrderingRelations: true
+            }
+        ],
         'no-unused-expressions': 'warn',
         'no-unused-labels': 'warn',
         'no-unused-vars': [
@@ -466,9 +544,15 @@ const _globals = {
                 variables: true
             }
         ],
+        'no-useless-backreference': 'error',
         'no-useless-call': 'error',
         'no-useless-catch': 'error',
-        'no-useless-computed-key': 'error',
+        'no-useless-computed-key': [
+            'error',
+            {
+                enforceForClassMembers: true
+            }
+        ],
         'no-useless-concat': 'error',
         'no-useless-constructor': 'error',
         'no-useless-escape': 'error',
@@ -592,10 +676,12 @@ const _globals = {
             }
         ],
         'prefer-destructuring': 'off',
+        'prefer-exponentiation-operator': 'error',
         'prefer-named-capture-group': 'off',
         'prefer-numeric-literals': 'error',
         'prefer-object-spread': 'error',
         'prefer-promise-reject-errors': 'error',
+        'prefer-regex-literals': 'error',
         'prefer-rest-params': 'warn',
         'prefer-spread': 'error',
         'prefer-template': 'warn',
@@ -608,7 +694,7 @@ const _globals = {
             'single'
         ],
         radix: 'error',
-        'require-atomic-updates': 'error',
+        'require-atomic-updates': 'off', // https://github.com/eslint/eslint/issues/11899
         'require-await': 'warn',
         'require-unicode-regexp': 'error',
         'require-yield': 'warn',
@@ -637,6 +723,7 @@ const _globals = {
         'sort-imports': [
             'error',
             {
+                allowSeparatedGroups: false,
                 ignoreCase: true,
                 ignoreDeclarationSort: false,
                 ignoreMemberSort: false,
@@ -696,7 +783,13 @@ const _globals = {
             'error',
             'never'
         ],
-        'use-isnan': 'error',
+        'use-isnan': [
+            'error',
+            {
+                enforceForIndexOf: true,
+                enforceForSwitchCase: true
+            }
+        ],
         'valid-typeof': [
             'error',
             {
@@ -728,5 +821,7 @@ const _globals = {
 
 export {
     _globals as globals,
+    _noInlineConfig as noInlineConfig,
+    _reportUnusedDisableDirectives as reportUnusedDisableDirectives,
     _rules as rules
 };

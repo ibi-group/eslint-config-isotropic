@@ -26,4 +26,41 @@ _mocha.describe('eslint-config-isotropic', () => {
             ]);
         });
     });
+
+    _mocha.it('should ignore the indent rule in template literals', () => {
+        // This test doesn't assert anything useful but the pretest lint script will fail if this doesn't pass
+
+        const arrowFunctionA = string => `
+                abx ${
+                    string
+                } xcv
+            `.replace(/.*/u, match => ({
+                a: 'multiline',
+                function: 'body'
+            }[match])),
+            arrowFunctionB = string => `${
+                string
+            }`.replace(/.*/u, match => ({
+                a: 'multiline',
+                function: 'body'
+            }[match])),
+            string = 'abc',
+            text = `
+                this is some structure {
+                    that has its own indentation {
+                        separate from the containing code {
+                            and it contains code in a placeholder {
+                                ${
+                                    string === 'abc' ?
+                                        arrowFunctionA(string) :
+                                        arrowFunctionB(string)
+                                }
+                            }
+                        }
+                    }
+                }
+            `;
+
+        _chai.expect(text).to.be.a.string;
+    });
 });
