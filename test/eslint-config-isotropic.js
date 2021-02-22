@@ -1,6 +1,6 @@
 import * as _eslintConfigIsotropic from '../js/eslint-config-isotropic.js';
-import _chai from 'chai';
-import _mocha from 'mocha';
+import _chai from 'isotropic-dev-dependencies/lib/chai.js';
+import _mocha from 'isotropic-dev-dependencies/lib/mocha.js';
 
 _mocha.describe('eslint-config-isotropic', () => {
     _mocha.it('should be a shared eslint config object', () => {
