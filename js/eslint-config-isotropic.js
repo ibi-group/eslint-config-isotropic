@@ -407,6 +407,7 @@ const _globals = {
         'no-new-object': 'error',
         'no-new-symbol': 'error',
         'no-new-wrappers': 'error',
+        'no-nonoctal-decimal-escape': 'error',
         'no-obj-calls': 'error',
         'no-octal': 'error',
         'no-octal-escape': 'error',
@@ -523,6 +524,12 @@ const _globals = {
             'error',
             {
                 enforceForOrderingRelations: true
+            }
+        ],
+        'no-unsafe-optional-chaining': [
+            'error',
+            {
+                disallowArithmeticOperators: true
             }
         ],
         'no-unused-expressions': 'warn',
